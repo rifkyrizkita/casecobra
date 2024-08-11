@@ -24,7 +24,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   const [showConfetti, setShowConfetti] = useState(false);
-  useEffect(() => setShowConfetti(true), []);
+  useEffect(() => setShowConfetti(true));
 
   const { color, model, finish, material } = configuration;
   const tw = COLORS.find((c) => c.value === color)?.tw;
@@ -53,9 +53,14 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
     },
   });
 
+  console.log("user", user);
+  console.log("halo dunia");
+  
+
   const handleCheckout = async () => {
     if (user) {
       // create payment session
+      console.log("user1", user);
       createPaymentSession({ configId: id });
     } else {
       // need to login
